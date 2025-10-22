@@ -1,26 +1,84 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reffuron</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #121212;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-        h1 {
-            margin-top: 100px;
-            color: #00c3ff;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reffuron</title>
+  <style>
+    /* Genel Stil */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      text-align: center;
+      transition: background 0.5s ease;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: #00c3ff;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid #00c3ff;
+      color: #00c3ff;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #00c3ff;
+      color: #0f2027;
+      transform: scale(1.05);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+  </style>
 </head>
 <body>
-    <h1>Reffuron’a Hoş Geldiniz!</h1>
-    <p>Bu site GitHub Pages kullanılarak oluşturuldu.</p>
+  <h1>Reffuron</h1>
+  <p>Hoş geldiniz 👋  
+     Bu site GitHub Pages üzerinde barındırılıyor ve yakında çok daha fazlası burada olacak!</p>
+
+  <div class="buttons">
+    <a href="https://github.com/reffuron" class="btn" target="_blank">GitHub</a>
+    <a href="https://twitter.com/" class="btn" target="_blank">Twitter</a>
+    <a href="mailto:reffuron@example.com" class="btn">E-posta Gönder</a>
+  </div>
+
+  <footer>© 2025 Reffuron. Tüm hakları saklıdır.</footer>
 </body>
 </html>
