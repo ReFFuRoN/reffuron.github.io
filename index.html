@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reffuron</title>
   <style>
-    body {
+    /* Genel ayarlar */
+    body, html {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0d1117;
-      color: white;
-      overflow-x: hidden;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Poppins", sans-serif;
+    }
+
+    /* 🎥 Video arka plan */
+    .background-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(60%);
     }
 
     /* Üst Menü */
@@ -45,12 +58,13 @@
       left: 0;
       width: 80px;
       height: calc(100% - 80px);
-      background-color: rgba(255,255,255,0.05);
+      background-color: rgba(255, 255, 255, 0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 20px;
       padding-top: 30px;
+      z-index: 5;
     }
 
     .game {
@@ -75,6 +89,8 @@
       white-space: nowrap;
       opacity: 0;
       transition: all 0.4s ease;
+      color: #00c3ff;
+      font-weight: 500;
     }
 
     .game:hover img {
@@ -89,7 +105,10 @@
     /* Ortadaki Hoşgeldiniz Alanı */
     .main-content {
       text-align: center;
-      margin-top: 180px;
+      margin-top: 200px;
+      color: white;
+      z-index: 2;
+      position: relative;
     }
 
     .main-content h1 {
@@ -105,13 +124,27 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 8rem;
-      color: rgba(255,255,255,0.05);
+      color: rgba(255, 255, 255, 0.05);
       z-index: -1;
+    }
+
+    .main-content p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 20px auto;
+      opacity: 0.9;
     }
 
   </style>
 </head>
 <body>
+
+  <!-- 🎬 Video arka plan -->
+  <video autoplay muted loop class="background-video">
+    <source src="assets/background.mp4" type="video/mp4">
+  </video>
+
+  <!-- Üst Menü -->
   <nav>
     <a href="index.html">Anasayfa</a>
     <a href="hakkimda.html">Hakkımda</a>
@@ -119,6 +152,7 @@
     <a href="blog.html">Blog</a>
   </nav>
 
+  <!-- Sol logo menüsü -->
   <div class="sidebar">
     <div class="game">
       <img src="assets/images/albion.png" alt="Albion Logo">
@@ -134,8 +168,12 @@
     </div>
   </div>
 
+  <!-- Ortadaki içerik -->
   <div class="main-content">
     <h1>Hoşgeldiniz</h1>
+    <p>Oyun dünyasına hoş geldiniz.  
+       Blogumda oynadığım oyunlar, deneyimlerim ve videolarımı bulabilirsiniz 🎮</p>
   </div>
+
 </body>
 </html>
