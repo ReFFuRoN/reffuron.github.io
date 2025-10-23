@@ -138,6 +138,27 @@
       opacity: 0.9;
     }
 
+    /* 🔖 Sürüm etiketi (sağ alt köşe) */
+    .version-tag {
+      position: fixed;
+      bottom: 15px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #00c3ff;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 12px;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+      user-select: none;
+      transition: opacity 0.3s;
+    }
+
+    .version-tag:hover {
+      opacity: 0.7;
+    }
+
   </style>
 </head>
 <body>
@@ -179,6 +200,10 @@
        Blogumda oynadığım oyunlar, deneyimlerim ve videolarımı bulabilirsiniz 🎮</p>
   </div>
 
+  <!-- Sağ alt köşedeki sürüm etiketi -->
+  <div class="version-tag">
+    Reffuron v1.2 — Güncellendi ✅
+  </div>
+
 </body>
 </html>
-
