@@ -116,7 +116,7 @@
             margin-top: 20px;
         }
 
-        /* Oyun Logoları Bölümü */
+        /* Oyun Logoları Bölümü - YENİ TASARIM */
         .games-section {
             position: fixed;
             left: 50px;
@@ -125,7 +125,7 @@
             z-index: 100;
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
         }
 
         .game-item {
@@ -139,39 +139,54 @@
         .game-logo {
             width: 70px;
             height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
+            border-radius: 15px;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
             transition: all 0.4s ease;
             border: 3px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .game-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-name-container {
+            position: absolute;
+            left: 0;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(90deg, rgba(138, 43, 226, 0.95), rgba(102, 126, 234, 0.95));
+            border-radius: 15px;
+            padding-left: 85px;
+            padding-right: 30px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(138, 43, 226, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            z-index: 1;
         }
 
         .game-name {
-            position: absolute;
-            left: 90px;
-            background: rgba(138, 43, 226, 0.95);
-            padding: 15px 30px;
-            border-radius: 30px;
             font-size: 20px;
             font-weight: 700;
-            opacity: 0;
-            transform: translateX(-20px);
-            transition: all 0.4s ease;
             white-space: nowrap;
-            box-shadow: 0 10px 40px rgba(138, 43, 226, 0.6);
-            backdrop-filter: blur(10px);
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .game-item:hover .game-logo {
-            transform: translateX(15px) scale(1.1);
+            transform: translateX(120px) scale(1.1);
             box-shadow: 0 15px 50px rgba(138, 43, 226, 0.8);
         }
 
-        .game-item:hover .game-name {
+        .game-item:hover .game-name-container {
             opacity: 1;
             transform: translateX(0);
         }
@@ -215,37 +230,39 @@
             margin-bottom: 20px;
         }
 
-        /* Wiki Sayfası */
-        .wiki-page {
-            display: none;
-            min-height: 100vh;
-            padding: 120px 100px 50px 100px;
-            position: relative;
-            z-index: 10;
+        /* Bağış Butonu Stili */
+        .donation-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
         }
 
-        .wiki-page.active {
-            display: block;
-            animation: fadeIn 0.8s ease;
+        .donation-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
 
-        .back-button {
-            display: inline-block;
-            margin-bottom: 30px;
-            padding: 12px 30px;
-            background: rgba(138, 43, 226, 0.8);
+        .donation-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-radius: 25px;
             color: #fff;
             text-decoration: none;
             font-weight: 600;
+            font-size: 18px;
             transition: all 0.3s ease;
-            border: 2px solid rgba(138, 43, 226, 1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
         }
 
-        .back-button:hover {
-            background: rgba(138, 43, 226, 1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+        .donation-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.6);
         }
 
         /* Animasyonlar */
@@ -305,6 +322,10 @@
             .content-box {
                 padding: 30px;
             }
+            
+            .donation-buttons {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -321,13 +342,14 @@
 
     <!-- Navigasyon -->
     <nav>
-        <a href="#" onclick="showHome()">Ana Sayfa</a>
-        <a href="#" onclick="showPage('about')">Hakkımda</a>
-        <a href="#" onclick="showPage('contact')">İletişim</a>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hakkimda.html">Hakkımda</a>
+        <a href="iletisim.html">İletişim</a>
+        <a href="bagis.html">💝 Destek Ol</a>
     </nav>
 
     <!-- Hoşgeldin Bölümü -->
-    <div id="home" class="welcome-section">
+    <div class="welcome-section">
         <div class="welcome-text">
             <h2>Hoş Geldiniz!</h2>
             <h1>REFFURON</h1>
@@ -335,118 +357,64 @@
         </div>
     </div>
 
-    <!-- Oyun Logoları -->
+    <!-- Oyun Logoları - GERÇEK LOGOLAR -->
     <div class="games-section">
-        <div class="game-item" onclick="showWiki('minecraft')">
-            <div class="game-logo">🎮</div>
-            <div class="game-name">Minecraft</div>
+        <div class="game-item" onclick="location.href='metin2.html'">
+            <div class="game-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Metin2_logo.svg/1200px-Metin2_logo.svg.png" alt="Metin2">
+            </div>
+            <div class="game-name-container">
+                <div class="game-name">Metin2</div>
+            </div>
         </div>
-        <div class="game-item" onclick="showWiki('valorant')">
-            <div class="game-logo">🎯</div>
-            <div class="game-name">Valorant</div>
+        
+        <div class="game-item" onclick="location.href='albion.html'">
+            <div class="game-logo">
+                <img src="https://albiononline.com/assets/images/logo/logo.png" alt="Albion Online">
+            </div>
+            <div class="game-name-container">
+                <div class="game-name">Albion Online</div>
+            </div>
         </div>
-        <div class="game-item" onclick="showWiki('lol')">
-            <div class="game-logo">⚔️</div>
-            <div class="game-name">League of Legends</div>
+        
+        <div class="game-item" onclick="location.href='minecraft.html'">
+            <div class="game-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png" alt="Minecraft">
+            </div>
+            <div class="game-name-container">
+                <div class="game-name">Minecraft</div>
+            </div>
         </div>
-        <div class="game-item" onclick="showWiki('csgo')">
-            <div class="game-logo">🔫</div>
-            <div class="game-name">CS:GO</div>
+        
+        <div class="game-item" onclick="location.href='valorant.html'">
+            <div class="game-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Valorant_logo_-_pink_color_version.svg/1200px-Valorant_logo_-_pink_color_version.svg.png" alt="Valorant">
+            </div>
+            <div class="game-name-container">
+                <div class="game-name">Valorant</div>
+            </div>
         </div>
-    </div>
-
-    <!-- Hakkımda Sayfası -->
-    <div id="about" class="page-content">
-        <div class="content-box">
-            <h2>Hakkımda</h2>
-            <p>Merhaba! Ben Reffuron. Oyun tutkunu bir içerik üreticisi ve vlogger'ım.</p>
-            <p>Bu site, oynadığım oyunlar hakkında detaylı wiki içerikleri ve kişisel deneyimlerimi paylaştığım bir platform.</p>
-            <p>Oyun dünyasındaki maceramı takip etmek ve benimle birlikte öğrenmek için doğru yerdesiniz!</p>
+        
+        <div class="game-item" onclick="location.href='lol.html'">
+            <div class="game-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/League_of_Legends_2019_vector.svg/1200px-League_of_Legends_2019_vector.svg.png" alt="League of Legends">
+            </div>
+            <div class="game-name-container">
+                <div class="game-name">League of Legends</div>
+            </div>
         </div>
-    </div>
-
-    <!-- İletişim Sayfası -->
-    <div id="contact" class="page-content">
-        <div class="content-box">
-            <h2>İletişim</h2>
-            <p>📧 E-posta: reffuron@example.com</p>
-            <p>🎮 Discord: Reffuron#0000</p>
-            <p>📺 YouTube: @Reffuron</p>
-            <p>🐦 Twitter: @Reffuron</p>
-            <p>Benimle iletişime geçmek için yukarıdaki kanalları kullanabilirsiniz!</p>
-        </div>
-    </div>
-
-    <!-- Wiki Sayfaları -->
-    <div id="wiki-minecraft" class="wiki-page">
-        <a href="#" class="back-button" onclick="showHome()">← Ana Sayfaya Dön</a>
-        <div class="content-box">
-            <h2>🎮 Minecraft Wiki</h2>
-            <p>Minecraft dünyasında maceralarım, ipuçları ve rehberler burada!</p>
-            <p>Bu bölümde Minecraft hakkında detaylı içerikler, yapım tarifleri, strateji rehberleri ve daha fazlasını bulabilirsiniz.</p>
-            <p><strong>Popüler Konular:</strong></p>
-            <p>• Başlangıç Rehberi<br>• Ev Yapımı İpuçları<br>• Redstone Mekanizmaları<br>• Enchantment Rehberi</p>
-        </div>
-    </div>
-
-    <div id="wiki-valorant" class="wiki-page">
-        <a href="#" class="back-button" onclick="showHome()">← Ana Sayfaya Dön</a>
-        <div class="content-box">
-            <h2>🎯 Valorant Wiki</h2>
-            <p>Valorant'ta rankımı nasıl yükselttiğim ve en iyi stratejilerim!</p>
-            <p>Bu bölümde agent rehberleri, harita stratejileri, silah incelemeleri ve rekabetçi mod ipuçları bulabilirsiniz.</p>
-            <p><strong>Popüler Konular:</strong></p>
-            <p>• Agent Rehberleri<br>• Harita Kontrol Noktaları<br>• Aim Geliştirme<br>• Takım Oyunu Taktikleri</p>
-        </div>
-    </div>
-
-    <div id="wiki-lol" class="wiki-page">
-        <a href="#" class="back-button" onclick="showHome()">← Ana Sayfaya Dön</a>
-        <div class="content-box">
-            <h2>⚔️ League of Legends Wiki</h2>
-            <p>LoL'deki şampiyonlar, meta ve oyun stratejileri hakkında her şey!</p>
-            <p>Bu bölümde şampiyon rehberleri, build önerileri, lane stratejileri ve güncel meta analizleri bulabilirsiniz.</p>
-            <p><strong>Popüler Konular:</strong></p>
-            <p>• Şampiyon Rehberleri<br>• Meta Analizleri<br>• Lane Kontrolü<br>• Takım Savaşları</p>
-        </div>
-    </div>
-
-    <div id="wiki-csgo" class="wiki-page">
-        <a href="#" class="back-button" onclick="showHome()">← Ana Sayfaya Dön</a>
-        <div class="content-box">
-            <h2>🔫 CS:GO Wiki</h2>
-            <p>Counter-Strike'ta becerilerimi geliştirme yolculuğum!</p>
-            <p>Bu bölümde harita stratejileri, spray kontrol rehberleri, ekonomi yönetimi ve pozisyon rehberleri bulabilirsiniz.</p>
-            <p><strong>Popüler Konular:</strong></p>
-            <p>• Harita Bilgisi<br>• Spray Kontrol<br>• Ekonomi Yönetimi<br>• Takım Koordinasyonu</p>
+        
+        <div class="game-item" onclick="location.href='csgo.html'">
+            <div class="game-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/CS-GO_Logo.svg/1200px-CS-GO_Logo.svg.png" alt="CS:GO">
+            </div>
+            <div class="game-name-container">
+                <div class="game-name">CS:GO</div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Sayfa Yönetimi
-        function showHome() {
-            document.getElementById('home').style.display = 'flex';
-            document.querySelectorAll('.page-content, .wiki-page').forEach(el => {
-                el.classList.remove('active');
-            });
-        }
-
-        function showPage(pageId) {
-            document.getElementById('home').style.display = 'none';
-            document.querySelectorAll('.page-content, .wiki-page').forEach(el => {
-                el.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-        }
-
-        function showWiki(game) {
-            document.getElementById('home').style.display = 'none';
-            document.querySelectorAll('.page-content, .wiki-page').forEach(el => {
-                el.classList.remove('active');
-            });
-            document.getElementById('wiki-' + game).classList.add('active');
-        }
-
         // Parçacık Animasyonu
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
