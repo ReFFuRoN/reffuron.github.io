@@ -14,7 +14,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
-            background: #0a0a0a;
+            background: #000000;
             color: #fff;
         }
 
@@ -27,6 +27,7 @@
             height: 100%;
             overflow: hidden;
             z-index: -1;
+            background: #000000;
         }
 
         .video-background::before {
@@ -36,14 +37,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(0, 191, 255, 0.3));
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(20, 0, 0, 0.5));
             z-index: 1;
         }
 
         .video-background video {
-            width: 100%;
-            height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 120%;
+            min-height: 120%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%) scale(1.1);
             object-fit: cover;
+            opacity: 0.8;
         }
 
         /* Navigasyon */
@@ -95,12 +103,9 @@
         .welcome-text h1 {
             font-size: 80px;
             font-weight: 900;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #ff0000;
+            text-shadow: 0 0 30px rgba(255, 0, 0, 0.8), 0 0 60px rgba(255, 0, 0, 0.5);
             margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
         }
 
         .welcome-text h2 {
@@ -340,7 +345,7 @@
     <!-- Video Arkaplan -->
     <div class="video-background">
         <video autoplay muted loop playsinline>
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4">
+            <source src="videos/background.mp4" type="video/mp4">
         </video>
     </div>
 
@@ -371,11 +376,11 @@
                 <img src="images/landofheroes.png" alt="Land of Heroes">
             </div>
             <div class="game-name-container">
-                <div class="game-name">Land of Heroes </div>
+                <div class="game-name">Land of<br>Heroes</div>
             </div>
         </div>
         
-        <div class="game-item" onclick="location.href='albion.html'">
+        <div class="game-item" onclick="location.href='games/albion.html'">
             <div class="game-logo">
                 <img src="https://albiononline.com/assets/images/logo/logo.png" alt="Albion Online">
             </div>
@@ -384,7 +389,7 @@
             </div>
         </div>
         
-        <div class="game-item" onclick="location.href='minecraft.html'">
+        <div class="game-item" onclick="location.href='games/minecraft.html'">
             <div class="game-logo">
                 <img src="https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png" alt="Minecraft">
             </div>
@@ -392,9 +397,10 @@
                 <div class="game-name">Minecraft</div>
             </div>
         </div>
+    </div>
         
     <script>
-        // Parçacık Animasyonu
+        // Parçacık Animasyonu - ATEŞ EFEKTİ
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -409,22 +415,30 @@
                 y: Math.random() * canvas.height,
                 vx: Math.random() * 2 - 1,
                 vy: Math.random() * 2 - 1,
-                size: Math.random() * 2 + 1
+                size: Math.random() * 3 + 1
             });
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(138, 43, 226, 0.5)';
             
             particles.forEach(p => {
+                // Sabit ateş renkleri (turuncu-kırmızı)
+                const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2);
+                gradient.addColorStop(0, 'rgba(255, 200, 0, 0.8)'); // Parlak turuncu
+                gradient.addColorStop(0.5, 'rgba(255, 100, 0, 0.5)'); // Koyu turuncu
+                gradient.addColorStop(1, 'rgba(255, 0, 0, 0)'); // Kırmızı fade
+                
+                ctx.fillStyle = gradient;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
                 ctx.fill();
                 
+                // Rastgele hareket
                 p.x += p.vx;
                 p.y += p.vy;
                 
+                // Ekran sınırlarında sekme
                 if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
             });
@@ -441,6 +455,3 @@
     </script>
 </body>
 </html>
-
-
-
