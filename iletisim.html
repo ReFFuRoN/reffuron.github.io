@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim - Reffuron</title>
+    <title>Land of Heroes Wiki - Reffuron</title>
     <style>
         * {
             margin: 0;
@@ -55,72 +55,80 @@
             opacity: 0.8;
         }
 
-         nav {
-       position: fixed;
-       top: 0;
-       right: 0;
-       padding: 30px 50px;
-       z-index: 1000;
-       display: flex;
-       gap: 30px;
-   }
+        /* Navigasyon - SAĞ ÜSTE SABİTLENMİŞ */
+        nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            padding: 30px 50px;
+            z-index: 1000;
+            display: flex;
+            gap: 30px;
+        }
 
         nav a {
             color: #fff;
             text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
             padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
+            border-radius: 25px;
             transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         nav a:hover {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(138, 43, 226, 0.8);
+            border-color: rgba(138, 43, 226, 1);
             transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
         }
 
         .content {
-    max-width: 1000px;
-    margin: 0 auto;
-    margin-top: 100px;  /* ← BUNU EKLE */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    padding: 50px;
-    border-radius: 30px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-top: 100px;
+        }
 
         h1 {
             font-size: 50px;
             margin-bottom: 30px;
         }
 
-        p {
-            font-size: 22px;
-            line-height: 2;
+        h2 {
+            font-size: 35px;
+            margin-top: 40px;
             margin-bottom: 20px;
         }
 
-        .social-links {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .social-links a {
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            transition: all 0.3s ease;
+        p {
             font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 20px;
         }
 
-        .social-links a:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateX(10px);
+        ul {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .game-logo {
+            width: 200px;
+            margin-bottom: 30px;
+            border-radius: 15px;
         }
     </style>
 </head>
@@ -128,16 +136,18 @@
     <!-- Video Arkaplan -->
     <div class="video-background">
         <video autoplay muted loop playsinline>
-            <source src="videos/background.mp4" type="video/mp4">
+            <source src="../videos/background.mp4" type="video/mp4">
         </video>
     </div>
 
+    <!-- Navigasyon -->
     <nav>
-        <a href="index.html">← Ana Sayfa</a>
-        <a href="hakkimda.html">Hakkımda</a>
-        <a href="bagis.html">💝 Destek Ol</a>
+        <a href="../index.html">Ana Sayfa</a>
+        <a href="../hakkimda.html">Hakkımda</a>
+        <a href="../iletisim.html">İletişim</a>
+        <a href="../destek.html">💝 Destek Ol</a>
     </nav>
-
+    
     <div class="content">
         <h1>📬 İletişim</h1>
         <p>Benimle iletişime geçmek için aşağıdaki kanalları kullanabilirsiniz:</p>
