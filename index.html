@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reffuron - Oyun Dünyam</title>
+    <link href="https://fonts.googleapis.com/css2?family=Redressed&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -85,7 +86,7 @@
             box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
         }
 
-        /* Hoşgeldin Bölümü */
+       /* Hoşgeldin Bölümü */
         .welcome-section {
             height: 100vh;
             display: flex;
@@ -98,13 +99,42 @@
 
         .welcome-text {
             animation: fadeInUp 1.5s ease;
+            position: relative;
+        }
+
+        .welcome-text::before {
+            content: 'REFFURON';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 90px;
+            font-weight: 400;
+            font-family: 'Redressed', cursive;
+            letter-spacing: 2px;
+            color: transparent;
+            z-index: -1;
+            text-shadow: 
+                0 0 20px rgba(0, 200, 255, 0.6),
+                0 0 40px rgba(0, 150, 255, 0.4),
+                0 0 60px rgba(0, 100, 255, 0.2);
+            filter: blur(12px);
         }
 
         .welcome-text h1 {
-            font-size: 80px;
-            font-weight: 900;
-            color: #00ff00;
+            font-size: 90px;
+            font-weight: 400;
+            color: #E8E8E8;
             margin-bottom: 20px;
+            font-family: 'Redressed', cursive;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 
+                4px 4px 0px #1a1a1a,
+                -2px -2px 0px rgba(255, 255, 255, 0.1),
+                0 0 15px rgba(0, 180, 255, 0.5);
+            -webkit-text-stroke: 1px #4a4a4a;
         }
 
         .welcome-text h2 {
@@ -119,7 +149,7 @@
             color: #ddd;
             margin-top: 20px;
         }
-
+        
         /* Oyun Logoları Bölümü - YENİ TASARIM */
         .games-section {
             position: fixed;
@@ -454,4 +484,5 @@
     </script>
 </body>
 </html>
+
 
