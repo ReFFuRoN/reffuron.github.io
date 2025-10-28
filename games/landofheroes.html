@@ -13,11 +13,11 @@
         }
 
         body {
-            font-family: 'Redressed', cursive;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #000000;
             color: #fff;
             min-height: 100vh;
-            padding: 50px;
+            overflow-x: hidden;
         }
 
         /* Video Arkaplan */
@@ -28,19 +28,8 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: -1;
+            z-index: -2;
             background: #000000;
-        }
-
-        .video-background::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(20, 0, 0, 0.5));
-            z-index: 1;
         }
 
         .video-background video {
@@ -53,27 +42,44 @@
             height: auto;
             transform: translate(-50%, -50%) scale(1.1);
             object-fit: cover;
-            opacity: 0.8;
+            opacity: 0.3;
         }
 
-        /* Navigasyon - SAĞ ÜSTE SABİTLENMİŞ */
+        /* Logo Arkaplan - Yarı Saydam */
+        .logo-background {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background-image: url('../images/landofheroes.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.08;
+            z-index: -1;
+            filter: blur(2px);
+        }
+
+        /* Navigasyon - SAĞ ÜSTE */
         nav {
             position: fixed;
             top: 0;
             right: 0;
-            padding: 30px 50px;
+            padding: 20px 40px;
             z-index: 1000;
             display: flex;
-            gap: 30px;
+            gap: 20px;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 8px 16px;
+            border-radius: 20px;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -84,52 +90,214 @@
             background: rgba(138, 43, 226, 0.8);
             border-color: rgba(138, 43, 226, 1);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
         }
 
-        .content {
-            max-width: 1000px;
+        /* Üst Başlık Bölümü */
+        .header-section {
+            text-align: center;
+            padding: 100px 20px 50px 20px;
+        }
+
+        .header-logo {
+            width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+        }
+
+        .header-section h1 {
+            font-family: 'Redressed', cursive;
+            font-size: 70px;
+            color: #E8E8E8;
+            margin-bottom: 10px;
+            text-shadow: 
+                4px 4px 0px #1a1a1a,
+                0 0 20px rgba(0, 180, 255, 0.5);
+        }
+
+        .header-section p {
+            font-size: 20px;
+            color: #aaa;
+            font-style: italic;
+        }
+
+        /* Ana Konteyner - Sidebar + Content */
+        .main-container {
+            display: flex;
+            max-width: 1400px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            gap: 30px;
+        }
+
+        /* Sol Sidebar Menü */
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
-            padding: 50px;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            margin-top: 100px;
+            border-radius: 20px;
+            padding: 30px 20px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
-        h1 {
-            font-size: 50px;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            font-size: 35px;
-            margin-top: 40px;
+        .sidebar h3 {
+            font-size: 24px;
             margin-bottom: 20px;
+            color: #00b4ff;
+            font-family: 'Redressed', cursive;
         }
 
-        p {
-            font-size: 20px;
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 15px;
+            display: block;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background: rgba(0, 180, 255, 0.2);
+            border-color: rgba(0, 180, 255, 0.5);
+            transform: translateX(10px);
+        }
+
+        /* Sağ İçerik Bölümü */
+        .content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #00b4ff;
+            font-family: 'Redressed', cursive;
+        }
+
+        .content h3 {
+            font-size: 28px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #4dd0ff;
+        }
+
+        .content p {
+            font-size: 18px;
             line-height: 1.8;
             margin-bottom: 20px;
+            color: #ddd;
         }
 
-        ul {
-            font-size: 20px;
-            line-height: 1.8;
+        .content ul {
             margin-left: 30px;
             margin-bottom: 20px;
         }
 
-        li {
+        .content li {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+
+        /* Harita/Görsel Kutusu */
+        .map-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(0, 180, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .map-box img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .map-box h4 {
+            font-size: 22px;
+            color: #00b4ff;
             margin-bottom: 10px;
         }
 
-        .game-logo {
-            width: 200px;
-            margin-bottom: 30px;
+        .map-box p {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        /* Video Kutusu */
+        .video-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(138, 43, 226, 0.3);
             border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .video-box iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+        }
+
+        /* İpucu Kutusu */
+        .tip-box {
+            background: rgba(0, 180, 255, 0.1);
+            border-left: 4px solid #00b4ff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .tip-box strong {
+            color: #00b4ff;
+            font-size: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
         }
     </style>
 </head>
@@ -141,6 +309,9 @@
         </video>
     </div>
 
+    <!-- Logo Arkaplan -->
+    <div class="logo-background"></div>
+
     <!-- Navigasyon -->
     <nav>
         <a href="../index.html">Ana Sayfa</a>
@@ -149,34 +320,177 @@
         <a href="../destek.html">💝 Destek Ol</a>
     </nav>
 
-    <div class="content">
-        <img src="../images/landofheroes.png" alt="Land of Heroes" class="game-logo">
-        <h1>⚔️ Land of Heroes Wiki</h1>
-        <p>Land of Heroes dünyasında maceralarım, ipuçları ve rehberler burada!</p>
-
-        <h2>🎮 Oyun Hakkında</h2>
-        <p>Land of Heroes bir PvP odaklı MMORPG oyunudur. Bu bölümde oyun hakkında detaylı bilgiler bulabilirsiniz.</p>
-
-        <h2>💎 Başlangıç Rehberi</h2>
-        <p>Oyuna yeni başlayanlar için ipuçları:</p>
-        <ul>
-            <li>Karakterini doğru seç</li>
-            <li>İlk görevleri tamamla</li>
-            <li>Ekipmanlarını geliştir</li>
-            <li>Bir klana katıl</li>
-        </ul>
-
-        <h2>⚔️ PvP İpuçları</h2>
-        <p>Oyuncuya karşı savaşlarda başarılı olmak için:</p>
-        <ul>
-            <li>Skill kombinasyonlarını öğren</li>
-            <li>Harita avantajını kullan</li>
-            <li>Ekipmanlarını maksimum seviyeye geliştir</li>
-            <li>Takım oyunu oyna</li>
-        </ul>
-
-        <h2>📝 Kişisel Notlarım</h2>
-        <p>Bu bölüme kendi deneyimlerimi ve özel taktiklerimi eklemeye devam edeceğim. Takipte kalın!</p>
+    <!-- Üst Başlık -->
+    <div class="header-section">
+        <img src="../images/landofheroes.png" alt="Land of Heroes" class="header-logo">
+        <h1>Land of Heroes</h1>
+        <p>Kapsamlı Oyun Rehberi ve Wiki</p>
     </div>
+
+    <!-- Ana İçerik -->
+    <div class="main-container">
+        <!-- Sol Menü -->
+        <aside class="sidebar">
+            <h3>📚 Rehber Menüsü</h3>
+            <ul class="sidebar-menu">
+                <li><a href="#" onclick="showSection('baslangic')">🎮 Başlangıç Rehberi</a></li>
+                <li><a href="#" onclick="showSection('harita')">🗺️ Harita & Bölgeler</a></li>
+                <li><a href="#" onclick="showSection('itemler')">⚔️ İtemler & Basma</a></li>
+                <li><a href="#" onclick="showSection('eventler')">🎉 Eventler</a></li>
+                <li><a href="#" onclick="showSection('zindanlar')">🏰 Zindanlar</a></li>
+                <li><a href="#" onclick="showSection('sss')">❓ Sık Sorulan Sorular</a></li>
+            </ul>
+        </aside>
+
+        <!-- Sağ İçerik -->
+        <main class="content">
+            <!-- Başlangıç Rehberi -->
+            <div id="baslangic" class="content-section active">
+                <h2>🎮 Başlangıç Rehberi</h2>
+                <p>Land of Heroes'a hoş geldin! Bu rehber oyuna yeni başlayanlar için hazırlanmıştır.</p>
+
+                <h3>1️⃣ Karakter Oluşturma</h3>
+                <p>Öncelikle karakterini oluşturmalısın. Oyunda 4 farklı karakter sınıfı bulunuyor:</p>
+                <ul>
+                    <li><strong>Savaşçı:</strong> Yüksek dayanıklılık, yakın dövüş uzmanı</li>
+                    <li><strong>Okçu:</strong> Uzak mesafe saldırıları, hızlı hareket</li>
+                    <li><strong>Büyücü:</strong> Güçlü sihirler, alan hasarı</li>
+                    <li><strong>Suikastçi:</strong> Gizlilik, yüksek kritik vuruş</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>💡 İpucu:</strong> Yeni başlayanlar için Savaşçı sınıfı tavsiye edilir!
+                </div>
+
+                <h3>2️⃣ İlk Görevler</h3>
+                <p>Karakterini oluşturduktan sonra köy meydanında görev veren NPC'lerle konuş. İlk 10 görevi tamamlayarak temel ekipmanlarını kazanacaksın.</p>
+
+                <h3>3️⃣ Ekipman Geliştirme</h3>
+<p>Düşmanlardan düşen itemleri topla ve demirciye götürerek güçlendir. İlk hedefin +5 ekipman setini tamamlamak olmalı!</p>
+            </div>
+
+            <!-- Harita & Bölgeler -->
+            <div id="harita" class="content-section">
+                <h2>🗺️ Harita & Bölgeler</h2>
+                <p>Land of Heroes dünyası geniş bir haritaya sahip. İşte keşfedebileceğin ana bölgeler:</p>
+
+                <div class="map-box">
+                    <img src="https://via.placeholder.com/800x500/1a1a1a/00b4ff?text=Buraya+Harita+Görseli+Gelecek" alt="Oyun Haritası">
+                    <h4>🏰 Başlangıç Köyü</h4>
+                    <p>Seviye 1-10 için ideal bölge. Güvenli alan, PvP yok. İlk görevlerini burada tamamla.</p>
+                </div>
+
+                <div class="map-box">
+                    <img src="https://via.placeholder.com/800x500/1a1a1a/ff4444?text=Karanlık+Orman" alt="Karanlık Orman">
+                    <h4>🌲 Karanlık Orman</h4>
+                    <p>Seviye 15-30 için uygun. Dikkat! PvP bölgesi. Değerli itemler düşüyor.</p>
+                </div>
+
+                <h3>🎯 Yapılacaklar Listesi</h3>
+                <ul>
+                    <li>Başlangıç köyündeki tüm görevleri tamamla</li>
+                    <li>Seviye 15'e ulaştığında Karanlık Orman'a git</li>
+                    <li>Boss mağarasını keşfet (Haritanın kuzey doğusu)</li>
+                    <li>Guild'e katıl ve toplu aktivitelere katıl</li>
+                </ul>
+            </div>
+
+            <!-- İtemler & Basma -->
+            <div id="itemler" class="content-section">
+                <h2>⚔️ İtemler & Basma Rehberi</h2>
+                <p>Güçlü ekipman sahibi olmak için doğru yerlerde farm yapmalısın!</p>
+
+                <h3>🔥 En İyi Farm Noktaları</h3>
+                
+                <div class="tip-box">
+                    <strong>💎 Efsanevi Kılıç:</strong> Ejderha Mağarası boss'undan %5 şansla düşüyor!
+                </div>
+
+                <h3>📦 İtem Seviyeleri</h3>
+                <ul>
+                    <li><strong style="color: #aaa;">Beyaz:</strong> Normal itemler</li>
+                    <li><strong style="color: #00ff00;">Yeşil:</strong> Nadir itemler</li>
+                    <li><strong style="color: #0080ff;">Mavi:</strong> Üstün itemler</li>
+                    <li><strong style="color: #a335ee;">Mor:</strong> Epik itemler</li>
+                    <li><strong style="color: #ff8000;">Turuncu:</strong> Efsanevi itemler</li>
+                </ul>
+            </div>
+
+            <!-- Eventler -->
+            <div id="eventler" class="content-section">
+                <h2>🎉 Eventler</h2>
+                <p>Günlük ve haftalık eventlere katılarak özel ödüller kazan!</p>
+
+                <h3>📅 Event Takvimi</h3>
+                <ul>
+                    <li><strong>Her gün 20:00:</strong> Boss Invasion - Tüm oyuncular vs Boss</li>
+                    <li><strong>Cuma 21:00:</strong> Guild Savaşları</li>
+                    <li><strong>Pazar 19:00:</strong> Arena Turnuvası</li>
+                </ul>
+
+                <div class="video-box">
+                    <h4>📺 Event Katılım Rehberi (Video)</h4>
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Zindanlar -->
+            <div id="zindanlar" class="content-section">
+                <h2>🏰 Zindanlar</h2>
+                <p>En iyi ekipmanları zindanlardan elde edebilirsin!</p>
+
+                <h3>⚔️ Zindan Listesi</h3>
+                
+                <div class="map-box">
+                    <img src="https://via.placeholder.com/800x400/1a1a1a/ff0000?text=Zindan+Görseli" alt="Zindan">
+                    <h4>🔥 Ateş Tapınağı</h4>
+                    <p><strong>Seviye:</strong> 25+ | <strong>Oyuncu:</strong> 5 kişi | <strong>Zorluk:</strong> Orta</p>
+                    <p>Ateş elementli ekipmanlar düşüyor. Boss: Alev Lordu</p>
+                </div>
+
+                <div class="video-box">
+                    <h4>📺 Ateş Tapınağı Boss Taktiği</h4>
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- SSS -->
+            <div id="sss" class="content-section">
+                <h2>❓ Sık Sorulan Sorular</h2>
+
+                <h3>🔹 Nasıl level atlayabilirim?</h3>
+                <p>Görevleri tamamla, mobları öldür ve dungeon'lara gir. En hızlı level yöntemi daily quest'leri yapmaktır.</p>
+
+                <h3>🔹 Guild nasıl kurulur?</h3>
+                <p>Seviye 20'ye ulaştıktan sonra şehir merkezindeki Guild Master NPC'sine 1000 Gold ödeyerek guild kurabilirsin.</p>
+
+                <h3>🔹 Nasıl para kazanabilirim?</h3>
+                <p>Moblardan düşen itemleri sat, günlük görevleri tamamla veya Auction House'da ticaret yap.</p>
+
+                <h3>🔹 PvP zorunlu mu?</h3>
+                <p>Hayır! Güvenli bölgelerde kalarak tamamen PvE oynayabilirsin. Ama PvP bölgelerinde daha iyi ödüller var.</p>
+
+                <div class="tip-box">
+                    <strong>❔ Daha fazla soru mu var?</strong> Discord sunucumuza katıl veya iletişim sayfasından bana ulaş!
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Tüm bölümleri gizle
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Seçilen bölümü göster
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Sayfayı yukarı kaydır
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
